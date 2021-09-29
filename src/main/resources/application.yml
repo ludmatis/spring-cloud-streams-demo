@@ -1,0 +1,50 @@
+#spring:
+#  cloud:
+#    stream:
+#      bindings:
+#        toReverse-in-0:
+#          destination: exc.reverse
+#          #group: reverse
+#        toReverse-out-0:
+#          destination: exc.upper
+#         # group: reverse
+#        toUpper-in-0:
+#          destination: exc.upper
+#        okayBoss-in-0:
+#          destination: exc.okej
+#          #group: upper
+#        sendMessages-out-0:
+#          destination: exc.reverse
+#          #group: message
+#      function:
+#        definition: toReverse;toUpper;okayBoss
+#      rabbit:
+#        bindings:
+#          toUpper-in-0:
+#            consumer:
+#              exchangeType: fanout
+#              bindQueue: false
+#              declareExchange: false
+#              queueNameGroupOnly: true
+#              acknowledgeMode: NONE
+#          toReverse-in-0:
+#            consumer:
+#              exchangeType: fanout
+#              bindQueue: false
+#              declareExchange: false
+#              queueNameGroupOnly: true
+#          toReverse-out-0:
+#            producer:
+#              exchangeType: fanout
+#              bindQueue: false
+#              declareExchange: false
+#              queueNameGroupOnly: true
+#          sendMessages-out-0:
+#            producer:
+#              exchangeType: fanout
+#              bindQueue: false
+#              declareExchange: false
+#              queueNameGroupOnly: true
+#      function:
+#        definition: toReverse;toUpper;sendMessages
+#
